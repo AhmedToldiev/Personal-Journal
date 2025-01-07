@@ -1,15 +1,26 @@
 import styles from './JournalForm.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../Button/Button'
 import classNames from 'classnames'
 
+const INITIAL_STATE = {
+	title: true,
+	post: true,
+	date: true,
+}
 function JournalForm({ onSubmit }) {
-	const [formValidState, setFormValidState] = useState({
-		title: true,
-		post: true,
-		date: true,
-	})
+	const [formValidState, setFormValidState] = useState(INITIAL_STATE)
 
+	useEffect(() => {
+		let timerId
+		if (!formValidState.title || !formValidState.post || !formValidState.date) {
+			timerId = setTimeout(() => {
+				console.log('Очистка состояния')
+				setFormValidState(INITIAL_STATE)
+			}, 2000)
+		}
+		return () => clearTimeout(timerId)
+	}, [formValidState])
 	const addJournalItem = e => {
 		e.preventDefault()
 		const formData = new FormData(e.target)
@@ -50,7 +61,7 @@ function JournalForm({ onSubmit }) {
 			</div>
 			<div className={styles['form-row']}>
 				<label htmlFor='date' className={styles['form-label']}>
-					<img  src='/calendar.svg' alt='Иконка календаря' />
+					<img src='/calendar.svg' alt='Иконка календаря' />
 					<span>Дата</span>
 				</label>
 				<input

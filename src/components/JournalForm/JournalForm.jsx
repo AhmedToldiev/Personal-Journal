@@ -3,6 +3,7 @@ import { useEffect, useReducer, useRef } from 'react'
 import Button from '../Button/Button'
 import classNames from 'classnames'
 import { formReducer, INITIAL_STATE } from './JournalForm.state'
+import Input from '../Input/Input'
 
 function JournalForm({ onSubmit }) {
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE)
@@ -57,15 +58,13 @@ function JournalForm({ onSubmit }) {
 	return (
 		<form className={styles['journal-form']} onSubmit={addJournalItem}>
 			<div>
-				<input
+				<Input
 					type='text'
 					ref={titleRef}
-					name='title'
 					onChange={onChange}
 					value={values.title}
-					className={classNames(styles['input-title'], {
-						[styles['invalid']]: !isValid.title,
-					})}
+					name='title'
+					isValid={!isValid.title}
 				/>
 			</div>
 			<div className={styles['form-row']}>
@@ -73,16 +72,14 @@ function JournalForm({ onSubmit }) {
 					<img src='/calendar.svg' alt='Иконка календаря' />
 					<span>Дата</span>
 				</label>
-				<input
+				<Input
 					type='date'
 					ref={dateRef}
 					onChange={onChange}
 					name='date'
 					value={values.date}
 					id='date'
-					className={classNames(styles['input'], {
-						[styles['invalid']]: !isValid.date,
-					})}
+					isValid={!isValid.title}
 				/>
 			</div>
 			<div className={styles['form-row']}>
@@ -90,13 +87,12 @@ function JournalForm({ onSubmit }) {
 					<img src='/folder.svg' alt='Иконка папки' />
 					<span>Метки</span>
 				</label>
-				<input
+				<Input
 					type='text'
-					id='tag'
 					onChange={onChange}
-					name='tag'
+					id='tag'
 					value={values.tag}
-					className={styles['input']}
+					name='tag'
 				/>
 			</div>
 

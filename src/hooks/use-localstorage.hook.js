@@ -11,7 +11,7 @@ export default function useLocalStorage(key) {
 	}, [])
 
 	const saveData = newData => {
-		localStorage.setItem('key', JSON.stringify(newData))
+		localStorage.setItem('data', JSON.stringify(newData))
 		setData(newData)
 	}
 	return [data, saveData]

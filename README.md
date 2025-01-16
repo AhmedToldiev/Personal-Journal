@@ -15,7 +15,7 @@
 
 1. Клонируйте репозиторий:
 
-**git clone <git@github.com:AhmedToldiev/Personal-Journal.git>**
+**git clone git@github.com:AhmedToldiev/Personal-Journal.git**
 
 
 2. Перейдите в директорию проекта:
@@ -33,6 +33,8 @@
 Для запуска проекта в режиме разработки используйте команду:
 
 **npm run dev**
+
+После этого откройте **http://localhost:3000** в вашем браузере.
 
 ## Используемые технологии
 

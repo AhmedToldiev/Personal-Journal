@@ -1,0 +1,11 @@
+.select {
+	padding: 10px;
+  background-color: #181818;
+	border: 1px solid #323232;
+	color: white;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	font-family: 'Source Sans 3', sans-serif;
+}
